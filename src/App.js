@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useTable} from "react-table";
+import {useTable, useSortBy} from "react-table";
 
 import './App.css';
 
@@ -41,7 +41,7 @@ function Table(){
     []
   );
 
-  const tableInstance = useTable({columns, data})
+  const tableInstance = useTable({columns, data}, useSortBy)
 
   const {
     getTableProps,
@@ -57,7 +57,7 @@ function Table(){
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                 {column.render("Header")}
               </th>
             ))}
