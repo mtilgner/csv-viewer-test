@@ -38,10 +38,24 @@ function App() {
 
   const parseFile = (file) => {
     const result = Papa.parse(file, {delimiter: ",", header: true});
+
     // Spaltenueberschriften konvertieren fuer react-table
-    const cols = result.meta.fields.map((field) => {return {Header: field, accessor: field}});
-    setColumns(cols);
-    setData(result.data);
+    const columnHeaders = result.meta.fields.map((field) => {
+      return {Header: field, accessor: field};
+    });
+
+    // Leerzeile filtern
+    const dataFiltered = result.data.filter((row) => row.id != "");
+
+    // Datum konvertieren in deutsches Format (nur Spalte "birthday")
+    const dataConverted = dataFiltered.map((row) => {
+      let date = new Date(row.birthday);
+      let birthdayConverted = date?.toLocaleDateString("de-DE", {dateStyle: "medium"});
+      return Object.assign({}, row, {birthday: birthdayConverted});
+    });
+
+    setColumns(columnHeaders);
+    setData(dataConverted);
   };
 
   const handleFileChange = (e) => {
