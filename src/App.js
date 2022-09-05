@@ -18,7 +18,7 @@ function App() {
     });
 
     // Leerzeile filtern
-    const dataFiltered = result.data.filter((row) => row.id != "");
+    const dataFiltered = result.data.filter((row) => row.id !== "");
 
     // Datum konvertieren in deutsches Format (nur Spalte "birthday")
     const dataConverted = dataFiltered.map((row) => {
