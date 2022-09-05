@@ -44,6 +44,7 @@ function App() {
 
   return (
     <div>
+      <label htmlFor='csvFileDialog'>Bitte Hausaufgabe.csv öffnen: </label>
       <input
         type="File"
         name="csvFileDialog"
