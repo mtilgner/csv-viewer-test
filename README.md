@@ -13,4 +13,7 @@ Hausaufgabe / Assignment: Anwendung zum Darstellen der CSV-Datei *Hausaufgabe.cs
 - Die Spalten können durch Klick auf die Spaltenköpfe sortiert werden.
 
 ## Sonstiges
-- Hier ist das [README](../README_CRA.md) von *create-react-app*.
+Verwendete Bibliotheken:
+- React
+- react-table
+- Papaparse
